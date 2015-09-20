@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MCM5E</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="gmaps.js"></script>
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <style type="text/css">
+  
+  #mapa{
+    background-color: red;
+    width: 100%;
+    height: 500px;
+    display: block;
+    margin-top: 0;
+    margin-left: 0;
+  }
+  
+</style>
+
+</head>
+<body>
+
+<div class="mapa" id="mapa" >hola</div>
+
+<div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+<script>
+    $(document).ready(function(){
+      var map = new GMaps({
+        div: '#mapa',
+        lat: 5.378671,
+        lng: 96.899027,
+        zoom:17
+      });
+
+      map.addMarker({
+         lat: 5.378671,
+        lng: 96.899027,
+        tittle:"hola",
+      });
+      GMaps.geolocate({
+        success: function(position){
+          map.setCenter(position.coords.latitude,position.coords.longitude);
+          map.addMarker({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            tittle:"micasa",
+            icon: 'cars3.png'
+            
+          });
+          map.addMarker({
+            lat: 19.4159537,
+            lng:-99.1290131,
+            tittle:"micasa",
+            icon: 'placeholder.png'
+            
+          });
+        }
+        
+
+     
+      });
+
+
+    });
+
+</script>
+
+</body>
+</html>

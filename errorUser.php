@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<title>Document</title>
+	<title>Iniciar Sesión</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Inicio de sesion de mcm5e" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Rengerden" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style2.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+</head>
+<body>
+		 <section>               
+                <div id="container_demo" >
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                           
+                                <form  action="login.php" autocomplete="on" method="post" >
+                                <h2 class="errorSes">ERROR: USUARIO O CONTRASEÑA NO VALIDOS  </h2>
+                                
+                            </form>
+                        </div>
+
+                       
+                        
+                    </div>
+                </div>  
+            </section>
+		 
+			
+			 <?php
+				ob_start();
+				header('refresh: 1; url = index.html');
+				
+				ob_end_flush();
+				?>
+</body>
+</html>

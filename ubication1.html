@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MCM5E</title>
+    <!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    -->
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="gmaps.js"></script>
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<style type="text/css">
+	
+	#mapa{
+		background-color: red;
+		width: 100%;
+		height: 500px;
+		display: block;
+		margin-top: 0;
+		margin-left: 0;
+		top:0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		position: block;
+	}
+	.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+	
+</style>
+
+</head>
+ 	
+<body>
+			<nav class="navbar navbar-default" role="navigation">
+			  <!-- El logotipo y el icono que despliega el menú se agrupan
+			       para mostrarlos mejor en los dispositivos móviles -->
+			  <div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse"
+			            data-target=".navbar-ex1-collapse">
+			      <span class="sr-only">Desplegar navegación</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+			    <a class="navbar-brand" href="#">Logotipo</a>
+			  </div>
+			 
+			  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+			       otro elemento que se pueda ocultar al minimizar la barra -->
+			  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			    <ul class="nav navbar-nav">
+			     
+			    </ul>
+			 
+			    
+					
+			    <ul class="nav navbar-nav navbar-right">
+			    <p class="navbar-text"><a href="#">Conectado como "Nombre Apellidos" <span class="badge">42</span></a></p>
+			      
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			          Menú<b class="caret"></b>
+			        </a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Perfil</a></li>
+			          <li><a href="#">Historia</a></li>
+			          <li><a href="#">Servicios</a></li>
+			          <li class="divider"></li>
+			          <li><a href="#">Acerca de</a></li>
+			        </ul>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+
+			
+		
+		<div class="container-fluid">
+		    <div class="col-lg-14">
+		    <div class="input-group">
+		    
+		      <input type="text" id="address" class="form-control input-lg" placeholder="Dirección">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default input-lg" type="button" id="search"> <span class="glyphicon glyphicon-search">    </span></button>
+		      </span>
+		     
+
+		    </div>
+		  </div>
+		</div>
+		<!--<div class="container-fluid">
+		<div class="mapa" id="mapa" >hola</div>
+		</div>
+		-->
+		
+		<div class="mapa" id="mapa" ></div>
+
+		<div class="container-fluid">
+			 <button type="button" class="btn  btn-block btn-default">Pedir Servicio</button>
+		</div>
+			
+<script>
+		
+    $(document).ready(function(){
+      var map = new GMaps({
+      	div: '#mapa',
+        lat: 5.378671,
+        lng: 96.899027,
+        zoom:17
+      });
+
+      
+
+      map.addMarker({
+         lat: 5.378671,
+        lng: 96.899027,
+        tittle:"hola",
+      });
+      GMaps.geolocate({
+        success: function(position){
+          map.setCenter(position.coords.latitude,position.coords.longitude);
+          map.addMarker({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            tittle:"micasa",
+            icon: 'cars3.png',
+            infoWindow:{
+            	content:'<p>Ubicación Actual</p>'
+            }
+            
+          });
+          map.addMarker({
+            lat: 19.4159537,
+            lng:-99.1290131,
+            tittle:"micasa",
+            icon: 'placeholder.png'
+            
+          });
+        }
+             
+      });
+      $('#search').click(function(e){
+				e.preventDefault();
+				GMaps.geocode({
+					address: $('#address').val().trim(),
+					callback: function(result,status){
+						if(status=='OK'){
+							var lating = result[0].geometry.location;
+							map.setCenter(lating.lat(),lating.lng());
+							map.addMarker({
+								lat:lating.lat(),
+								lng:lating.lng()
+							});
+						}
+					}
+				});
+});
+     
+    });
+
+
+
+</script>
+</body>
+</html>

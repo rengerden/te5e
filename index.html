@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="es" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="es" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="es" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="es" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html  lang="es"> 
+<!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>Iniciar Sesión</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Inicio de sesion de mcm5e" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class, taxis, ubication, " />
+        <meta name="author" content="Rengerden" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style2.css" />
+        <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
+        <link href="css/jquery-ui.css" type="text/css" rel="stylesheet">
+        <style>
+    #commentForm {
+        width: 500px;
+    }
+    #commentForm label {
+        width: 250px;
+    }
+    #commentForm label.error, #commentForm input.submit {
+        margin-left: 253px;
+    }
+    #signupForm {
+        width: 670px;
+    }
+    #signupForm label.error {
+        margin-left: 10px;
+        width: auto;
+        display: inline;
+    }
+    #newsletter_topics label.error {
+        display: none;
+        margin-left: 103px;
+    }
+    </style>
+    </head>
+    <body>          
+            <section>               
+                <div id="container_demo" >
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <!--<form  action="//<?php echo $_SERVER['PHP_SELF']; ?>" autocomplete="on" method="post" > -->
+                                <form  id="signupForm" action="login.php"  method="post" >
+                                <h1>Ingresa</h1>
+                                <fieldset>
+                               
+                                <p id="tooltip"> 
+                                    <label for="user" class="uname" data-icon="u" > Tu nombre de usuario </label>
+                                    <input id="user" name="user" title="Ingresa un nombre de usuario"  required type="text" 
+                                    placeholder="nombre de usuario"  /> 
+                                    <!--pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"/>-->
+                                </p>
+                                <p id="tooltip2"> 
+                                    <label for="pass" class="youpasswd" data-icon="p"> Tu contraseña </label>
+                                    <input id="pass" name="pass"   title="Ingresa tu contraseña"  type="password"
+                                     placeholder=" Ingresa tu contraseña" required/>
+                                     <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"/> -->
+                                </p>
+                                <p class="login button"> 
+                                    <input type="submit" value="Inicia Sesion" /> 
+                                </p>
+                                <p class="change_link">
+                                    ¿No tienes cuenta?
+                                    <a href="#toregister" class="to_register">Registrate</a>
+                                </p>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <div id="register" id="registerForm" class="animate form" >
+                            <form  action="register.php" method="post"> 
+                                <h1> Registro </h1> 
+                                <p id="tooltip3"> 
+                                    <label for="usernamesignup" class="uname" data-icon="u"> Tu nombre de usuario</label>
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" 
+                                    title="Nombre de usuario requerido"/>
+                                </p>
+                                <p id="tooltip3"> 
+                                    <label for="userlastnamesignup" class="uname" data-icon="u"> Tu apellido</label>
+                                    <input id="userlastnamesignup" name="userlastnamesignup" required="required" type="text" placeholder="mysuperusername690" 
+                                    title="apellido requerido"/>
+                                </p>
+                                <p id="tooltip4"> 
+                                    <label for="emailsignup" class="youmail" data-icon="e" > Tu correo electrónico</label>
+                                    <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"
+                                    title="Correo electronico requerido"/> 
+                                </p>
+                                <p id="tooltip6"> 
+                                    <label for="datesignup" class="youpasswd" data-icon="u"> Fecha de Nacimiento</label>
+                                    <input id="datesignup" name="datesignup" required="required" type="date" 
+                                    placeholder="dd/mm/aaaa" title="Fecha de nacimiento" />
+                                </p>
+                                <p id="tooltip5"> 
+                                    <label for="passwordsignup" class="youpasswd" data-icon="p"> Tu contraseña </label>
+                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"
+                                    title="Contraseña requerida"/>
+                                </p>
+                                <p id="tooltip6"> 
+                                    <label for="passwordsignup_confirm" class="youpasswd" data-icon="p"> Por favor confirma tu contraseña</label>
+                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" 
+                                    placeholder="eg. X8df!90EO" title="Confirma tu contraseña"/>
+                                </p>
+
+                                <p class="signin button"> 
+                                    <input type="submit" value="Registro"/> 
+                                </p>
+                                <p class="change_link">                                      
+                                    <a href="#tologin" class="to_register"> Inicia Sesion </a>
+                                </p>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>  
+            </section>
+           
+            
+            <script src="jquery-ui.js"></script>
+              <script>
+                
+                    $(function() {
+                    $( "#datesignup" ).datepicker({
+                            dateFormat: "dd-mm-yy",
+                            defaultDate: 0,
+                            //minDate:"+ 2d",
+                            maxDate:" -1d"   
+                        });
+
+
+                         });
+                  $().ready(function() {
+            $("#signupForm").validate({
+            rules: {
+                user: {
+                    required: true,
+                    minlength: 2
+                },
+                pass: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                
+                user: {
+                    required: "Por favor ingresa tu nombre de usuario",
+                    minlength: "Tu nombre de usuario es muy pequeño "
+                },
+                pass: {
+                    required: "Por favor ingresa tu contraseña",
+                    minlength: "Tu contraseña es demasiado pequeña"
+                }
+            }
+        });     
+
+            $("#registerForm").validate({
+            rules: {
+                user: {
+                    required: true,
+                    minlength: 2
+                },
+                pass: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                
+                user: {
+                    required: "Por favor ingresa tu nombre de usuario",
+                    minlength: "Tu nombre de usuario es muy pequeño "
+                },
+                pass: {
+                    required: "Por favor ingresa tu contraseña",
+                    minlength: "Tu contraseña es demasiado pequeña"
+                }
+            }
+        });     
+              });
+                  </script>
+                  
+    </body>
+</html>
