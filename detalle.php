@@ -16,6 +16,8 @@ $ren = mysql_fetch_array($res);
 			$edad = $ren["user_age"];
 			$calificacion =$ren["user_rate"];
 
+			
+			
 
 echo "<div> Detalles de Personas </div><br/><br/>";
 echo "<div> Id: $id </div>";
